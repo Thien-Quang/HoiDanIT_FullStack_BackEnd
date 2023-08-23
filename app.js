@@ -1,1 +1,0 @@
-console.log("alo 1 2 4 432maksjdfaklsjd")
