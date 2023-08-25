@@ -10,31 +10,34 @@ const getAbc = (req, res) => {
 
 }
 
-const getThienQuang = (req, res) => {
+const getCreatepage = (req, res) => {
 
-    res.render('sample.ejs')
+    res.render('create.ejs')
 
 }
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
 
     let { Email, MyName, City } = req.body;
 
     console.log(req.body);
     console.log(Email, MyName, City);
 
-    connection.query(
-        `INSERT INTO Users (email, name, city)
-         VALUES (?,?,?)`,
-        [Email, MyName, City],
-        function (err, results) {
-            console.log(results);
-            res.send('Create user success')
-        }
-    );
+    try {
+        let [results, fields] = await connection.query(
+            `INSERT INTO Users (email, name, city) VALUES (?,?,?)`,
+            [Email, MyName, City]
+        );
+
+        console.log("Insert successful:", results);
+        res.send('Create user success');
+    } catch (err) {
+        console.error("Error executing query:", err);
+        res.status(500).send("An error occurred while creating the user.");
+    }
 }
 module.exports = {
     getHomepage,
     getAbc,
-    getThienQuang,
+    getCreatepage,
     postCreateUser
 }

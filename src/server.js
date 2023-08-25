@@ -22,15 +22,15 @@ app.use('/', webRouters)
 
 
 // execute will internally call prepare and query
-connection.execute(
-  'SELECT * FROM Users u',
+// connection.execute(
+//   'SELECT * FROM Users u',
 
-  function (err, results, fields) {
-    console.log(">>resullts  = ", results); // results contains rows returned by server
+//   function (err, results, fields) {
+//     console.log(">>resullts  = ", results); // results contains rows returned by server
 
 
-  }
-);
+//   }
+// );
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`)

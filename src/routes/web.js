@@ -1,11 +1,11 @@
-const { getHomepage, getAbc, getThienQuang, postCreateUser } = require('../controllers/homeController')
+const { getHomepage, getAbc, postCreateUser, getCreatepage } = require('../controllers/homeController')
 const express = require('express')
 
 const router = express.Router()
 
 router.get('/', getHomepage)
 
-router.get('/thienquang', getThienQuang)
+router.get('/create', getCreatepage)
 
 router.get('/abc', getAbc)
 
