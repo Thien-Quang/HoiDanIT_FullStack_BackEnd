@@ -33,6 +33,40 @@
     tr:hover {
         background-color: #ccc;
     }
+
+    a {
+        background-color: burlywood;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: red;
+    }
+
+    button {
+        background-color: burlywood;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: red;
+    }
 </style>
 
 <body>
@@ -71,8 +105,10 @@
                         <%= user.city %>
                     </td>
                     <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <a href="/update/<%= user.id %>">Edit</a>
+                        <form action="/delete-user/<%= user.id %>" method="POST">
+                            <button>Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <% }); %>
