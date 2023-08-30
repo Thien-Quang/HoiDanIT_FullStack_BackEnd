@@ -3,10 +3,11 @@ const express = require('express')
 const configViewEngine = require('./config/viewEngine')
 const webRouters = require('./routes/web')
 const connection = require('./config/database')
+
 const app = express()
 const port = process.env.PORT || 8888
 const hostname = process.env.HOST_NAME
-
+const initAPIRoute = require('./routes/api')
 
 //coonfig req.body
 app.use(express.json())
@@ -18,7 +19,7 @@ configViewEngine(app)
 // khai báo route
 app.use('/', webRouters)
 
-
+initAPIRoute(app)
 
 
 // execute will internally call prepare and query
